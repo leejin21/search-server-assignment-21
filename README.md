@@ -1,5 +1,17 @@
 # wantedlab21-assignment
 
+## What is this project for
+
+원티드랩 21년도 해, 커리어 서버 개발자 채용과정의 코딩 과제입니다.
+
+## How this project works
+
+```bash
+
+python3 -m flask run
+
+```
+
 ## Github Commit Convention
 
 -   feat: 새로운 기능 추가
