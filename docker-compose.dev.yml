@@ -12,14 +12,25 @@ services:
             - FLASK_APP=./src/app.py
         volumes:
             - ./:/app
-    mysqldb:
-        image: mysql
+    postgres:
+        container_name: postgres
+        image: postgres:latest
         ports:
-            - 3306:3306
+            - 5432:5432
         environment:
-            - MYSQL_ROOT_PASSWORD={MYSQL_ROOT_PASSWORD}
+            - POSTGRES_DB=${PG_DB}
+            - POSTGRES_USER=${PG_USER}
+            - POSTGRES_PASSWORD=${PG_PASSWORD}
         volumes:
-            - mysql:/var/lib/mysql
+            - postgres:/var/lib/postgres
+    pgadmin:
+        container_name: pgadmin
+        image: dpage/pgadmin4
+        ports:
+            - 8088:80
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=${PG_ADMIN_EMAIL}
+            - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
 
 volumes:
-    mysql:
+    postgres:
