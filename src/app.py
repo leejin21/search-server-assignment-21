@@ -1,68 +1,48 @@
-import mysql.connector
 import json
-from flask import Flask
-import os
 
-app = Flask(__name__)
+from flask import request
 
-## DB_PASSWORD 환경변수에서 추출
-DB_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
+from . import create_app, database
+from .models import Cats
 
-@app.route('/')
-def hello_world():
-  return 'Hello, Docker!'
+app = create_app()
 
-@app.route('/widgets')
-def get_widgets():
-  
-  mydb = mysql.connector.connect(
-    host="mysqldb",
-    user="root",
-    password=DB_PASSWORD,
-    database="inventory"
-  )
-  cursor = mydb.cursor()
+@app.route('/', methods=['GET'])
+def fetch():
+    cats = database.get_all(Cats)
+    all_cats = []
+    for cat in cats:
+        new_cat = {
+            "id": cat.id,
+            "name": cat.name,
+            "price": cat.price,
+            "breed": cat.breed
+        }
 
-  cursor.execute("SELECT * FROM widgets")
+        all_cats.append(new_cat)
+    return json.dumps(all_cats), 200
 
-  row_headers=[x[0] for x in cursor.description] #this will extract row headers
 
-  results = cursor.fetchall() 
-  json_data=[]
-  for result in results:
-    json_data.append(dict(zip(row_headers,result)))
+@app.route('/add', methods=['POST'])
+def add():
+    data = request.get_json()
+    name = data['name']
+    price = data['price']
+    breed = data['breed']
 
-  cursor.close()
+    database.add_instance(Cats, name=name, price=price, breed=breed)
+    return json.dumps("Added"), 200
 
-  return json.dumps(json_data)
 
-@app.route('/initdb')
-def db_init():
-  mydb = mysql.connector.connect(
-    host="mysqldb",
-    user="root",
-    password=DB_PASSWORD
-  )
-  cursor = mydb.cursor()
+@app.route('/remove/<cat_id>', methods=['DELETE'])
+def remove(cat_id):
+    database.delete_instance(Cats, id=cat_id)
+    return json.dumps("Deleted"), 200
 
-  cursor.execute("DROP DATABASE IF EXISTS inventory")
-  cursor.execute("CREATE DATABASE inventory")
-  cursor.close()
 
-  mydb = mysql.connector.connect(
-    host="mysqldb",
-    user="root",
-    password=DB_PASSWORD,
-    database="inventory"
-  )
-  cursor = mydb.cursor()
-
-  cursor.execute("DROP TABLE IF EXISTS widgets")
-  cursor.execute("CREATE TABLE widgets (name VARCHAR(255), description VARCHAR(255))")
-  cursor.close()
-
-  return 'init database'
-
-if __name__ == "__main__":
-  app.debug = True
-  app.run(host ='0.0.0.0')
+@app.route('/edit/<cat_id>', methods=['PATCH'])
+def edit(cat_id):
+    data = request.get_json()
+    new_price = data['price']
+    database.edit_instance(Cats, id=cat_id, price=new_price)
+    return json.dumps("Edited"), 200
