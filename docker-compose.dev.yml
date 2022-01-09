@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+    web:
+        build:
+            context: .
+        env_file:
+            - .env
+        ports:
+            - 5000:5000
+        environment:
+            - FLASK_APP=./src/app.py
+        volumes:
+            - ./:/app
+    mysqldb:
+        image: mysql
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD={MYSQL_ROOT_PASSWORD}
+        volumes:
+            - mysql:/var/lib/mysql
+
+volumes:
+    mysql:

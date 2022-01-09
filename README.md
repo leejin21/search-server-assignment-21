@@ -3,14 +3,24 @@
 ## What is this project for
 
 원티드랩 21년도 해, 커리어 서버 개발자 채용과정의 코딩 과제입니다.
+도커를 사용해 개발했습니다.
 
 ## How this project works
 
 ```bash
+# 이미지 빌드 및 컨테이너 실행
+docker-compose -f docker-compose.dev.yml up -d --build
 
-python3 -m flask run
+# docker 관련 파일 변경 없이(이미지 상태 그대로) 컨테이너 실행
+docker-compose -f docker-compose.dev.yml up -d
+
+# 컨테이너 중지 및 삭제(이때 volume은 삭제되지 않음에 유의)
+docker-compose -f docker-compose.dev.yml down
 
 ```
+
+-   flask는 debug mode == ON 으로 설정함
+-   따라서, 이미지 변경 없이 서버만 코드 변경했을 때는 컨테이너 런 다시 안해도 됨.
 
 ## Github Commit Convention
 
