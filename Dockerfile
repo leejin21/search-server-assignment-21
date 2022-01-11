@@ -9,5 +9,5 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD [ "/bin/bash", "/app/docker-entrypoint.sh"]
+CMD [ "/bin/bash", "/app/bash-scripts/docker-entrypoint.sh"]
 # CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
