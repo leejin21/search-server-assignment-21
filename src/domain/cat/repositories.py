@@ -1,4 +1,4 @@
-from .repository import db
+from .entities import db
 
 
 def get_all(model):
