@@ -1,4 +1,4 @@
-from .repository import db
+from ...repository import db
 
 class Companies(db.Model):
     __tablename__ = 'companies'
