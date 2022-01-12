@@ -6,8 +6,8 @@
 
 from sqlalchemy import select
 
-from .entities import db
-from .entities import Company, CompanyName, Tag
+from ..entities import db
+from ..entities import Company, CompanyName, Tag
 
 
 
