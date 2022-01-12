@@ -24,8 +24,7 @@
  - TODO EXTEN fulltext 기능 구현
 """
 from flask import request
-from sqlalchemy import select
-from flask_restx import Api, Namespace, Resource
+from flask_restx import Namespace, Resource
 
 from ..entities import db
 

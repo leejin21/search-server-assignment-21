@@ -6,9 +6,7 @@
     3. 예외처리
 """
 
-from ..repositories import CompanyRepository, CompanyNameRepository, TagRepository
-from ..exceptions import DataNotExistException
-
+from ..repositories import CompanyNameRepository
 
 class CandidateGetUseCase:
     def __init__(self):

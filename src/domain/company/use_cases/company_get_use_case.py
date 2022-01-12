@@ -2,7 +2,7 @@
 * 앞으로 할 일
 - TODO lang: EN, KR, JP 중 하나로 포맷해야 함(유효성 검사)
 """
-from ..repositories import CompanyRepository, CompanyNameRepository, TagRepository
+from ..repositories import CompanyRepository, TagRepository
 from ..exceptions import DataNotExistException
 
 class CompanyGetUseCase:

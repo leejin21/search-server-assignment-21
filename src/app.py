@@ -1,7 +1,4 @@
-import json
-
-from flask import request
-from flask_restx import Api, Namespace, Resource
+from flask_restx import Api
 
 from . import create_app
 from .domain.company.controllers import CompanyNameSpace, CompanyCandidatesNameSpace
