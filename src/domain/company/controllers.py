@@ -2,14 +2,15 @@
 * 구현
  - FEAT /companies/ POST 구현
  - DEBUG /companies/ POST : tags 찾아서 연결하기, 없는 경우 생성하기
- - DEBUG 예외 처리
+ - DEBUG /companies/ POST 예외 처리
     1. data invalid error
         (1) name_info 길이가 0일 경우
         (2) name_info.name 길이가 0일 경우
         (3) tags 테이블에 tag_info.tags 길이가 0일 경우
     2. data already exist error
         (1) name_info.name이 기존 DB에 있는 name과 겹치는 경우
-    2. db can not access error
+    3. db can not access error
+    4. interal server error
 
 * 앞으로 할 일
  - TODO REFACTOR repositories, use_cases로 코드 분리
@@ -84,12 +85,12 @@ class CompaniesController(Resource):
             company_tags = exist_tags + not_exist_tags
             company.tags = company_tags
             
-            # 세션 add
+            # DB에 추가하는 company 정보들 insert
             db.session.add(company)
             db.session.add_all(company_names)
             db.session.add_all(not_exist_tags)
 
-            # 커밋
+            # DB에 커밋
             db.session.commit()
 
             return data, 200
@@ -98,6 +99,8 @@ class CompaniesController(Resource):
             return "INVALID DATA EXCEPTION : "+e.code, 400
         except InvalidDBAcessException as e:
             return "INVALID DB ACCESS EXCEPTION : "+e.code, 500
+        except Exception as e:
+            return "INTERNAL SERVER ERROR : "+str(e)[:50], 500
         
 
 @CompanyCandidatesNameSpace.route('/')
