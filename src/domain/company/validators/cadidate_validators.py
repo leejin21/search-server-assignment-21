@@ -2,7 +2,9 @@
 * 앞으로 할 일
 - TODO DOCS
 """
-from ..exceptions import InvalidDBAccessException, InvalidDataException
+from ....helpers import InvalidDataException
+
+
 
 def validate_candidates_get_data(params):
     # 예외 처리 1. data invalid error

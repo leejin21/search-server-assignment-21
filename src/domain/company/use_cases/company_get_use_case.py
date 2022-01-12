@@ -1,9 +1,11 @@
 """
 * 앞으로 할 일
-- TODO lang: EN, KR, JP 중 하나로 포맷해야 함(유효성 검사)
+- TODO lang: EN, KR, JP 또는 언어 약자들 중 하나로 포맷해야 함(유효성 검사)
 """
-from ..repositories import CompanyRepository, CompanyNameRepository, TagRepository
-from ..exceptions import DataNotExistException
+from ..repositories import CompanyRepository, TagRepository
+from ....helpers import DataNotExistException
+
+
 
 class CompanyGetUseCase:
     def __init__(self):
@@ -16,7 +18,7 @@ class CompanyGetUseCase:
         if not result:
             raise DataNotExistException('company name invalid')
         else:
-            company = result.Companies
+            company = result.Company
         
         tag_list = TagRepository.search_tags_by_company_name(lang=lang, name=company_name)
         if not tag_list:
