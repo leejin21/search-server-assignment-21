@@ -12,14 +12,14 @@ class CompanyGetUseCase:
         pass
 
     def execute(self, lang, company_name):
-        # Company JOIN CompanyNames JOIN CompanyTags 찾기
-        
+        # 1. company.id 찾기
         result = CompanyRepository.search_by_name(name=company_name)
         if not result:
             raise DataNotExistException('company name invalid')
         else:
             company = result.Company
         
+        # 1. 해당하는 company가 보유하는 태그 리스트 찾기
         tag_list = TagRepository.search_tags_by_company_name(lang=lang, name=company_name)
         if not tag_list:
             raise DataNotExistException('company name or lang invalid')
