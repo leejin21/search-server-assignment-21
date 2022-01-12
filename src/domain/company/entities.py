@@ -1,6 +1,13 @@
-from ...repository import db
+"""
+* 앞으로 할 일
+- TODO REFACTOR
+    클래스 이름 전부 단수로 바꾸기
+- TODO STUDY
+    Companies에서 CompanyNames를 null=False로 갖게 되는 경우 어떻게 되는 지
 
-# TODO 이름 단수로 바꾸기
+"""
+
+from ...repository import db
 
 CompanyTags = db.Table('company_tags',
     db.Column('company_id', db.Integer, db.ForeignKey('companies.id'), primary_key=True),

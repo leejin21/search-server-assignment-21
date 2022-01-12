@@ -1,5 +1,13 @@
-from .repositories import CompanyRepository, CompanyNameRepository, TagRepository
-from .repositories import db_add, db_add_all, db_commit
+"""
+* 앞으로 할 일
+- TODO REFACTOR
+    유즈케이스 추상화
+    CompanyNames 설정 부분 한줄로 처리
+    execute 메소드 -> company names, company tags 두 부분으로 분리
+"""
+from ..repositories import CompanyRepository, CompanyNameRepository, TagRepository
+from ..repositories import db_add, db_add_all, db_commit
+from ..exceptions import InvalidDataException
 
 class CompanyPostUseCase:
     def __init__(self):
@@ -15,7 +23,14 @@ class CompanyPostUseCase:
         for company_name in data['name_info']:
             lang = company_name['lang']
             name = company_name['name']
+
+            # 예외처리: company name이 이미 존재하는 지 검사
+            result = CompanyNameRepository.search_by_name(name)
+            if result:
+                raise InvalidDataException('name_info.name already exist in CompanyNames')
+
             instance = CompanyNameRepository.init_instance(lang=lang, name=name)
+            
             company_names.append(instance)
 
         company.names = company_names
