@@ -9,6 +9,8 @@ from ..repositories import CompanyRepository, CompanyNameRepository, TagReposito
 from ..repositories import db_add, db_add_all, db_commit
 from ..exceptions import InvalidDataException
 
+
+
 class CompanyPostUseCase:
     def __init__(self):
         pass

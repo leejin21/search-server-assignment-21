@@ -8,6 +8,8 @@
 
 from ..repositories import CompanyNameRepository
 
+
+
 class CandidateGetUseCase:
     def __init__(self):
         pass

@@ -6,7 +6,9 @@
 - TODO DOCS
     주석 알맞게 수정
 """
-from ..exceptions import InvalidDBAccessException, InvalidDataException
+from ..exceptions import InvalidDataException
+
+
 
 def validate_companies_get_data(params):
     # 예외 처리 1. data invalid error

@@ -9,14 +9,19 @@ from sqlalchemy import select
 from .entities import db
 from .entities import Companies, CompanyNames, Tags
 
+
+
 def db_add(instance):
     db.session.add(instance)
+
 
 def db_add_all(instances):
     db.session.add_all(instances)
 
+
 def db_commit():
     db.session.commit()
+
 
 class CompanyRepository:
     @staticmethod
@@ -30,6 +35,7 @@ class CompanyRepository:
                 filter(CompanyNames.name == name)
         result = db.session.execute(stmt).fetchone()
         return result
+
 
 class CompanyNameRepository:
     @staticmethod
@@ -53,6 +59,7 @@ class CompanyNameRepository:
         stmt = CompanyNames.query.filter(CompanyNames.name.contains(substr))
         results = db.session.execute(stmt).all()
         return results
+
 
 class TagRepository:
     @staticmethod

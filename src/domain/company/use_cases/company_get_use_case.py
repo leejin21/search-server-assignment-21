@@ -5,6 +5,8 @@
 from ..repositories import CompanyRepository, TagRepository
 from ..exceptions import DataNotExistException
 
+
+
 class CompanyGetUseCase:
     def __init__(self):
         pass
