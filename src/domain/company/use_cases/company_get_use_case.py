@@ -18,7 +18,7 @@ class CompanyGetUseCase:
         if not result:
             raise DataNotExistException('company name invalid')
         else:
-            company = result.Companies
+            company = result.Company
         
         tag_list = TagRepository.search_tags_by_company_name(lang=lang, name=company_name)
         if not tag_list:

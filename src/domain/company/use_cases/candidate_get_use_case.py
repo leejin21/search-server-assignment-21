@@ -23,14 +23,14 @@ class CandidateGetUseCase:
             front_results = CompanyNameRepository.search_by_substring_front(search_string)
 
             if front_results:
-                candidate_list = [row['CompanyNames'].name for row in front_results]
+                candidate_list = [row['CompanyName'].name for row in front_results]
                 return {"candidates": candidate_list}
             
             # 2. TRY 중간 글자부터 일치하는 걸 찾음
             middle_results = CompanyNameRepository.search_by_substring_middle(search_string)
             
             if middle_results:
-                candidate_list = [row['CompanyNames'].name for row in middle_results]
+                candidate_list = [row['CompanyName'].name for row in middle_results]
                 return {"candidates": candidate_list}
 
         return {"candidates": []}
