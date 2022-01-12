@@ -58,20 +58,21 @@ class CompaniesController(Resource):
             use_case = CompanyGetUseCase()
             response_data = use_case.execute(lang, company_name)
             
-            return response_data, 200
+            return {"status": 200, "message": "", "response_data": response_data}, 200
 
+        
         except InvalidDataException as e:
-            return "INVALID DATA EXCEPTION : "+e.code, 400
+            return {"status": 400, "message": "INVALID DATA EXCEPTION : "+e.code}, 200
 
         except InvalidDBAccessException as e:
-            return "INVALID DB ACCESS EXCEPTION : "+e.code, 500
-
+            return {"status": 500, "message": "INVALID DB ACCESS EXCEPTION : "+e.code}, 500
+        
         except DataNotExistException as e:
-            return "DATA NOT EXIST EXCEPTION : "+e.code, 400
+            return {"status": 400, "message": "DATA NOT EXIST EXCEPTION : "+e.code}, 400
 
         except Exception as e:
-            return "INTERNAL SERVER ERROR : "+str(e)[:200], 500
-        
+            return {"status": 500, "message": "INTERNAL SERVER ERROR : "+str(e)[:50]}, 500
+            
 
     def post(self):
         try:
@@ -85,14 +86,15 @@ class CompaniesController(Resource):
             use_case = CompanyPostUseCase()
             response_data = use_case.execute(data)
             
-            return response_data, 200
+            return {"status": 200, "message": "", "response_data": response_data}, 200
 
         except InvalidDataException as e:
-            return "INVALID DATA EXCEPTION : "+e.code, 400
+            return {"status": 400, "message": "INVALID DATA EXCEPTION : "+e.code}, 200
 
         except InvalidDBAccessException as e:
-            return "INVALID DB ACCESS EXCEPTION : "+e.code, 500
+            return {"status": 500, "message": "INVALID DB ACCESS EXCEPTION : "+e.code}, 500
 
         except Exception as e:
-            return "INTERNAL SERVER ERROR : "+str(e)[:50], 500
+            return {"status": 500, "message": "INTERNAL SERVER ERROR : "+str(e)[:50]}, 500
         
+    
