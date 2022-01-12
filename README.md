@@ -22,6 +22,18 @@ docker-compose -f docker-compose.dev.yml down
 -   flask는 debug mode == ON 으로 설정함
 -   따라서, 이미지 변경 없이 서버만 코드 변경했을 때는 컨테이너 런 다시 안해도 됨.
 
+## API 문서(임시)
+
+![API문서](./imgs/API.png)
+
+-   기능 1. 새로운 회사 추가하기 - /companies/ POST
+-   기능 2. 회사 이름으로 회사 검색하기 - /companies/ GET
+-   기능 3. 자동완성 - /companies/candidates/ GET
+
+## DB 문서
+
+![DB문서](./imgs/DB_img.png)
+
 ## Github Commit Convention
 
 -   feat: 새로운 기능 추가
