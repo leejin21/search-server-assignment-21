@@ -18,8 +18,17 @@ def validate_companies_post_data(data):
     
     return False
 
-def validate_companyname_already_exists(result):
+# TODO 추상화
+def validate_companyname_already_exists(data, select, session, table):
     # 예외 처리 2. data already exist error
     # (1) name_info.name이 기존 DB에 있는 name과 겹치는 경우
-    if result:
-        raise InvalidDataException('name_info.name already exist in CompanyNames')
+    for cn in data['name_info']:
+        stmt = select(table).where(table.name==cn['name'])
+        result = session.execute(stmt).fetchone()
+        if result:
+            raise InvalidDataException('name_info.name already exist in CompanyNames')
+
+
+def validate_db_session(session):
+    if not session:
+        raise InvalidDBAcessException('db not connected')
