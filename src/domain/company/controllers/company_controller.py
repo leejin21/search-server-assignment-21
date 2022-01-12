@@ -37,8 +37,7 @@ from flask_restx import Namespace, Resource
 
 from ..entities import db
 
-from ..use_cases.company_post_use_case import CompanyPostUseCase
-from ..use_cases.company_get_use_case import CompanyGetUseCase
+from ..use_cases import CompanyPostUseCase, CompanyGetUseCase
 
 from ..exceptions import InvalidDataException, InvalidDBAccessException, DataNotExistException
 from ..validators import validate_companies_post_data, validate_db_session, validate_companies_get_data
