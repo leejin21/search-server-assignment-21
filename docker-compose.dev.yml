@@ -1,17 +1,6 @@
 version: "3.8"
 
 services:
-    web:
-        build:
-            context: .
-        env_file:
-            - .env
-        ports:
-            - 5000:5000
-        environment:
-            - FLASK_APP=./src/app.py
-        volumes:
-            - ./:/app
     postgres:
         container_name: postgres
         image: postgres:latest
@@ -23,6 +12,17 @@ services:
             - POSTGRES_PASSWORD=${PG_PASSWORD}
         volumes:
             - postgres:/var/lib/postgres
+    web:
+        build:
+            context: .
+        env_file:
+            - .env
+        ports:
+            - 5000:5000
+        environment:
+            - FLASK_APP=./src/app.py
+        volumes:
+            - ./:/app
     pgadmin:
         container_name: pgadmin
         image: dpage/pgadmin4

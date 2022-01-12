@@ -1,6 +1,4 @@
-import flask_sqlalchemy
-
-db = flask_sqlalchemy.SQLAlchemy()
+from ...repository import db
 
 class Cats(db.Model):
     __tablename__ = 'cats'
