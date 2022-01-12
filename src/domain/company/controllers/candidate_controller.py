@@ -29,7 +29,7 @@ from flask_restx import Api, Namespace, Resource
 
 from ..entities import db
 
-from ..use_cases.candidate_get_use_case import CandidateGetUseCase
+from ..use_cases import CandidateGetUseCase
 
 from ..exceptions import InvalidDataException, InvalidDBAccessException
 from ..validators import validate_candidates_get_data, validate_db_session
