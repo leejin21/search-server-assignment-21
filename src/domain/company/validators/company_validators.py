@@ -4,7 +4,7 @@
     DB-validator, req-object-validator 분리하기
     추상화, 구조 개편
 """
-from ..exceptions import InvalidDataException
+from ....helpers import InvalidDataException
 
 
 

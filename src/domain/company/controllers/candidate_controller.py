@@ -21,7 +21,7 @@ from ..entities import db
 
 from ..use_cases import CandidateGetUseCase
 
-from ..exceptions import InvalidDataException, InvalidDBAccessException
+from ....helpers import InvalidDataException, InvalidDBAccessException
 from ..validators import validate_candidates_get_data, validate_db_session
 
 

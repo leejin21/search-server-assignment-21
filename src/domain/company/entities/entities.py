@@ -5,7 +5,7 @@
 
 """
 
-from ...repository import db
+from ....database import db
 
 
 

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 # from .models import db
-from .repository import db
+from .database import db
 from . import config
 
 

@@ -35,7 +35,7 @@ from ..entities import db
 
 from ..use_cases import CompanyPostUseCase, CompanyGetUseCase
 
-from ..exceptions import InvalidDataException, InvalidDBAccessException, DataNotExistException
+from ....helpers import InvalidDataException, InvalidDBAccessException, DataNotExistException
 from ..validators import validate_companies_post_data, validate_db_session, validate_companies_get_data
 
 

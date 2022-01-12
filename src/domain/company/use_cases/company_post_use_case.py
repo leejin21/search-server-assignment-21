@@ -7,7 +7,7 @@
 """
 from ..repositories import CompanyRepository, CompanyNameRepository, TagRepository
 from ..repositories import db_add, db_add_all, db_commit
-from ..exceptions import InvalidDataException
+from ....helpers import InvalidDataException
 
 
 
