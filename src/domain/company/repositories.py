@@ -1,3 +1,9 @@
+"""
+* 할 일
+ - TODO 다 result 객체 반환하도록 처리
+
+"""
+
 from sqlalchemy import select
 
 from .entities import db
@@ -35,7 +41,18 @@ class CompanyNameRepository:
         stmt = select(CompanyNames).where(CompanyNames.name==name)
         result = db.session.execute(stmt).fetchone()
         return result
-        
+    
+    @staticmethod
+    def search_by_substring_front(substr):
+        stmt = CompanyNames.query.filter(CompanyNames.name.like(substr+'%'))
+        results = db.session.execute(stmt).all()
+        return results
+    
+    @staticmethod
+    def search_by_substring_middle(substr):
+        stmt = CompanyNames.query.filter(CompanyNames.name.contains(substr))
+        results = db.session.execute(stmt).all()
+        return results
 
 class TagRepository:
     @staticmethod
@@ -51,7 +68,6 @@ class TagRepository:
     
     @staticmethod
     def search_tags_by_company_name(lang, name):
-        # TODO 함수 이름 바꾸기
         stmt = select(Tags).\
             join(Tags.companies).\
             join(Companies.names).\

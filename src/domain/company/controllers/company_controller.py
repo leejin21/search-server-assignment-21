@@ -41,7 +41,7 @@ from ..use_cases.company_post_use_case import CompanyPostUseCase
 from ..use_cases.company_get_use_case import CompanyGetUseCase
 
 from ..exceptions import InvalidDataException, InvalidDBAccessException, DataNotExistException
-from ..validators.company_validators import validate_companies_post_data, validate_db_session, validate_companies_get_data
+from ..validators import validate_companies_post_data, validate_db_session, validate_companies_get_data
 
 CompanyNameSpace = Namespace('Companies')
 

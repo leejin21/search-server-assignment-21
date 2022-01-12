@@ -3,6 +3,8 @@
 - TODO REFACTOR
     DB-validator, req-object-validator 분리하기
     추상화, 구조 개편
+- TODO DOCS
+    주석 알맞게 수정
 """
 from ..exceptions import InvalidDBAccessException, InvalidDataException
 
@@ -34,7 +36,3 @@ def validate_companies_post_data(data):
             raise InvalidDataException("invalid tag_info: tags length == 0")
     
     return False
-
-def validate_db_session(session):
-    if not session:
-        raise InvalidDBAccessException('db not connected')
