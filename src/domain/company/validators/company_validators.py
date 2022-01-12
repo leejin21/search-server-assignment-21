@@ -3,8 +3,6 @@
 - TODO REFACTOR
     DB-validator, req-object-validator 분리하기
     추상화, 구조 개편
-- TODO DOCS
-    주석 알맞게 수정
 """
 from ..exceptions import InvalidDataException
 
@@ -12,9 +10,10 @@ from ..exceptions import InvalidDataException
 
 def validate_companies_get_data(params):
     # 예외 처리 1. data invalid error
-    # (1) name_info 길이가 0일 경우
+    # (1) company_name 길이가 0이거나, 없는 경우
     if not params.get('company_name'):
         raise InvalidDataException("invalid query: company_names not exist")
+    # (2) lang 길이가 0이거나, 없는 경우
     if not params.get('lang'):
         raise InvalidDataException("invalid query: lang not exist")
     

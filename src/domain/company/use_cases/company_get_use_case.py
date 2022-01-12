@@ -1,6 +1,6 @@
 """
 * 앞으로 할 일
-- TODO lang: EN, KR, JP 중 하나로 포맷해야 함(유효성 검사)
+- TODO lang: EN, KR, JP 또는 언어 약자들 중 하나로 포맷해야 함(유효성 검사)
 """
 from ..repositories import CompanyRepository, TagRepository
 from ..exceptions import DataNotExistException

@@ -1,7 +1,5 @@
 """
 * 구현
- - FEAT /companies/ POST 구현
- - DEBUG /companies/ POST : tags 찾아서 연결하기, 없는 경우 생성하기
  - DEBUG /companies/ POST 예외 처리
     1. data invalid error
         (1) name_info 길이가 0일 경우
@@ -11,15 +9,13 @@
     3. data already exist error
         (1) name_info.name이 기존 DB에 있는 name과 겹치는 경우
     4. interal server error
-- REFACTOR use_cases, repositories로 분리
 
-- FEAT /companies/ GET 구현
 - DEBUG /companies/ GET 예외 처리
     1. data invalid error
         (1) company_name 유효하지 않은 경우
         (2) lang 유효하지 않은 경우
     2. db can not access error
-    3. data not exist error
+    3. data invalid error
         (1) company name이 테이블에 존재X
         (2) lang이 유효하지 않은 문자열일 경우 
     4. interal server error

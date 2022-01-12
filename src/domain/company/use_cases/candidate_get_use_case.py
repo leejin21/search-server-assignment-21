@@ -1,9 +1,13 @@
 """
-* 앞으로 할 일
-- TODO FEAT 자동완성 기능 구현
-    1. sub_string으로 검색
-    2. 비즈니스 로직 짜기
-    3. 예외처리
+* 구현
+ - FEAT /companies/candidates GET 구현
+    [비즈니스 로직]
+    0. 띄어쓰기를 구분자로 split해서 S = s1 + s2 + s3 + ...로 만들어준다
+    이후 S, s1, s2, s3로 차례로 아래 과정 1,2를 거친다.
+    1. 첫 글자부터 일치하는 걸 먼저 찾는다
+    2. 1도 없으면 중간부터 일치하는 걸 찾는다
+    3. 모든 S, s1, s2, ... 부터 다 1,2과정을 거쳤는데도 없으면 빈 리스트 보낸다
+
 """
 
 from ..repositories import CompanyNameRepository
