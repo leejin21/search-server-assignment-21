@@ -2,9 +2,7 @@
 * 구현
  - FEAT /companies/ POST 구현
  - DEBUG /companies/ POST : tags 찾아서 연결하기, 없는 경우 생성하기
-
-* 앞으로 할 일
- - TODO DEBUG 예외 처리
+ - DEBUG 예외 처리
     1. data invalid error
         (1) name_info 길이가 0일 경우
         (2) name_info.name 길이가 0일 경우
@@ -12,6 +10,8 @@
     2. data already exist error
         (1) name_info.name이 기존 DB에 있는 name과 겹치는 경우
     2. db can not access error
+
+* 앞으로 할 일
  - TODO REFACTOR repositories, use_cases로 코드 분리
     1. repo, use_cases로 분리
     2. req, res 객체 분리
