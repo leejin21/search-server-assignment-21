@@ -19,10 +19,8 @@ class CompanyGetUseCase:
         else:
             company = result.Company
         
-        # 1. 해당하는 company가 보유하는 태그 리스트 찾기
+        # 2. 해당하는 company가 보유하는 태그 리스트 찾기
         tag_list = TagRepository.search_tags_by_company_name(lang=lang, name=company_name)
-        if not tag_list:
-            raise DataNotExistException('company name or lang invalid')
 
         return {"id":company.id, "tag_info": tag_list, "name": company_name}
         
