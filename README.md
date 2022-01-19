@@ -7,9 +7,9 @@
 
 ### 기능들
 
--   [기능 1. 새로운 회사 추가하기 - /companies/ POST](#/companies/-POST-200-SUCCESS)
--   [기능 2. 회사 이름으로 회사 검색하기 - /companies/ GET](#/companies/-GET)
--   [기능 3. 자동완성 - /companies/candidates/ GET](#/companies/candidates/-GET)
+1. 새로운 회사 추가하기 - /companies/ POST
+2. 회사 이름으로 회사 검색하기 - /companies/ GET
+3. 자동완성 - /companies/candidates/ GET
 
 ## How this project works
 
@@ -37,7 +37,7 @@ docker-compose -f docker-compose.dev.yml down
 
 ## 기능 구동 모습
 
-### 기능 1. 새로운 회사 추가하기 - /companies/ POST
+### 기능 1. 새로운 회사 추가하기
 
 #### /companies/ POST 200 SUCCESS
 
@@ -47,13 +47,13 @@ docker-compose -f docker-compose.dev.yml down
 
 ![companies post 400 구동](./imgs/comp_post_400.gif)
 
-### 기능 2. 회사 이름으로 회사 검색하기 - /companies/ GET
+### 기능 2. 회사 이름으로 회사 검색하기
 
 #### /companies/ GET
 
 ![companies get all 구동](./imgs/comp_get_all.gif)
 
-### 기능 3. 자동완성 - /companies/candidates/ GET
+### 기능 3. 자동완성
 
 #### /companies/candidates/ GET
 
