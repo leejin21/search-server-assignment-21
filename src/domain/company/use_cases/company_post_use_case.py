@@ -39,12 +39,12 @@ class CompanyPostUseCase:
         # CompanyTags 설정하기
         exist_tags = []; not_exist_tags = []
         for company_tag in data['tag_info']:
-            lang = company_name['lang']
+            lang = company_tag['lang']
             for name in company_tag['tags']:    
                 # 이미 존재하는 tag의 경우 해당 태그로 CompanyTags 테이블에 저장
-                tag = TagRepository.search_by_name(name)
-                if tag:
-                    exist_tags.append(tag)
+                result = TagRepository.search_by_name(name)
+                if result:
+                    exist_tags.append(result.Tag)
                 else:
                     # 존재하지 않는 경우 해당 태그를 생성해 CompanyTags 테이블에 저장
                     instance = TagRepository.init_instance(lang=lang, name=name)

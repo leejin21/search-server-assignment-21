@@ -69,9 +69,8 @@ class TagRepository:
     @staticmethod
     def search_by_name(name):
         stmt = select(Tag).where(Tag.name==name)
-        result = db.session.execute(stmt)
-        tag = result.fetchone().Tag
-        return tag
+        result = db.session.execute(stmt).fetchone()
+        return result
     
     @staticmethod
     def search_tags_by_company_name(lang, name):
