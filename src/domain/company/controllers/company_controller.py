@@ -5,7 +5,7 @@
         (1) name_info 길이가 0일 경우
         (2) name_info.name 길이가 0일 경우
         (3) tag_info.tags 길이가 0일 경우
-        (4) TODO lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
+        (4) lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
     2. db can not access error
     3. data already exist error
         (1) name_info.name이 기존 DB에 있는 name과 겹치는 경우
