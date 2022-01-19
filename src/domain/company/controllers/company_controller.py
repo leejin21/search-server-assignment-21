@@ -14,7 +14,8 @@
 - DEBUG /companies/ GET 예외 처리
     1. data invalid error
         (1) company_name 유효하지 않은 경우
-        (2) lang 유효하지 않은 경우: 없거나, 길이 == 0이거나, lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
+        (2) lang 유효하지 않은 경우: 없거나, 길이 == 0이거나
+        (3) lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
     2. db can not access error
     3. data invalid error
         (1) company name이 테이블에 존재X

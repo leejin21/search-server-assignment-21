@@ -14,9 +14,11 @@ def validate_companies_get_data(params):
     if not params.get('company_name'):
         raise InvalidDataException("invalid query: company_names not exist")
     # (2) lang 길이가 0이거나, 없는 경우
-    # 또는 lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
-    if not params.get('lang') or Language.is_valid_language(params.get('lang')):
+    if not params.get('lang'):
         raise InvalidDataException("invalid query: lang not exist")
+    # (3) lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
+    if not Language.is_valid_language(params.get('lang')):
+        raise InvalidDataException("invalid query: lang not one of "+str(Language.display()))
     
     return False
 
