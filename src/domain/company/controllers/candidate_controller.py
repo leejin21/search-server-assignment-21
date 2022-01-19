@@ -33,13 +33,13 @@ CompanyCandidatesNameSpace = Namespace('CompanyCandidates')
 class CompanyCandidatesController(Resource):
     def get(self):
         try:
-            # 예외 처리
+            # * 예외 처리
             validate_candidates_get_data(request.args)  #1
             validate_db_session(db.session) #2
 
             search_name= request.args.get('search_name')
-            # tags= request.args.get('')
             
+            # * 유스케이스 생성해 데이터 가져오기
             use_case = CandidateGetUseCase()
             response_data = use_case.execute(search_name)
             

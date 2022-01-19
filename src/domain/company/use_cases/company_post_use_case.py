@@ -21,7 +21,6 @@ class CompanyPostUseCase:
         company_names = []
 
         # CompanyNames 설정하기
-        # TODO 1줄로 줄이기
         for company_name in data['name_info']:
             lang = company_name['lang']
             name = company_name['name']

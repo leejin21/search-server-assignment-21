@@ -13,9 +13,11 @@ def validate_companies_get_data(params):
     # (1) company_name 길이가 0이거나, 없는 경우
     if not params.get('company_name'):
         raise InvalidDataException("invalid query: company_names not exist")
+
     # (2) lang 길이가 0이거나, 없는 경우
     if not params.get('lang'):
         raise InvalidDataException("invalid query: lang not exist")
+
     # (3) lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우 
     if not Language.is_valid_language(params.get('lang')):
         raise InvalidDataException("invalid query: lang not one of "+str(Language.display()))
@@ -38,6 +40,7 @@ def validate_companies_post_data(data):
         # (3) tag_info.tags 길이가 0일 경우
         if len(tag['tags']) == 0:
             raise InvalidDataException("invalid tag_info: tags length == 0")
+            
         # (4) lang이 비즈니스 로직에서 정의하지 않은 언어에 해당하는 경우
         if not Language.is_valid_language(tag['lang']):
             raise InvalidDataException("invalid lang: not one of "+str(Language.display()))
