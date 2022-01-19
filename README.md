@@ -1,8 +1,8 @@
-# wantedlab21-assignment
+# Search-Server-Assignment-21
 
 ## What is this project for
 
-원티드랩 21년도 해, 커리어 서버 개발자 채용과정의 코딩 과제입니다.
+서버 개발자 채용과정의 코딩 과제입니다.
 도커를 사용해 개발했습니다.
 
 ### 기능들
@@ -63,7 +63,7 @@ docker-compose -f docker-compose.dev.yml down
 
 ### Business Logic
 
-![비즈니스 로직](./imgs/wanted21_test_busilogic.drawio.png)
+![비즈니스 로직](./imgs/business_logic.png)
 
 ### DOCS
 
@@ -79,7 +79,7 @@ docker-compose -f docker-compose.dev.yml down
 
 Uncle Bob의 클린 아키텍처 구조를 토대로 우선 구성해 보았습니다.
 
-![architecture](./imgs/wanted21_test_diagram.drawio.png)
+![architecture](./imgs/architecture.png)
 
 #### 참고: Uncle Bob의 클린 아키텍처 구조
 
